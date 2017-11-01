@@ -1,21 +1,21 @@
-**Kitten Wars**
-*Author: Kimberley Toman*
+# Kitten Wars
+Author: Kimberley Toman
 
-*Game Rules*
+## Game Rules
 Shoot evil kittens and your score goes up
 Shoot good kittens and your score goes down.
 
-*Game Rules*
+## Game Rules
 Obtain a score of 10 within 20 seconds to win. 
 
-*Description of the in-game characters*
+## Description of the in-game characters
 - player (human)
 - kittens (computer)
 
-*Description of the Game World*
+## Description of the Game World
 Kittens will disperse around the screen. Use your cursor to aim and click to shoot.
 
-*Setup*
+## Setup
 Uses XNA game framework.
 
 Runs in Visual Studio
