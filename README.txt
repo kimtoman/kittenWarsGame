@@ -1,5 +1,22 @@
-Kitten Wars
-Author: Kimberley Toman
+**Kitten Wars**
+*Author: Kimberley Toman*
+
+*Game Rules*
+Shoot evil kittens and your score goes up
+Shoot good kittens and your score goes down.
+
+*Game Rules*
+Obtain a score of 10 within 20 seconds to win. 
+
+*Description of the in-game characters*
+- player (human)
+- kittens (computer)
+
+*Description of the Game World*
+Kittens will disperse around the screen. Use your cursor to aim and click to shoot.
+
+*Setup*
+Uses XNA game framework.
 
 Runs in Visual Studio
 Download the community version here:
@@ -13,10 +30,3 @@ you want it installed to.
 
 To run:
 Select the solution (myGame.sln) and open with visual studio -> Start
-
-Blue kittens are evil
-Pink kittens are good
-
-Shoot evil kittens and your score goes up
-Shoot good kittens and your score goes down
-Obtain a score of 10 within 20 seconds to win.
