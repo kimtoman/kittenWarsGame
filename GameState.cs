@@ -53,6 +53,9 @@ namespace myGame
 
         public override void Initialize()
         {
+            // Temporary addition of power up item to determine its working
+            game.AddObject(new PowerUp(game));
+
             //Fill evil and good kitten x and y coordintes
             for (int i = 0; i < NUM_KITTENS; i++)
             {
