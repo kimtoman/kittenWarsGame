@@ -14,6 +14,7 @@ namespace myGame
         private static System.Random rnd = new System.Random((int)DateTime.Now.Ticks);
         private Texture2D powerUpLogo;
         private string textureName;
+        private Gun gun;
 
         public int x;
         public int y;
@@ -24,6 +25,7 @@ namespace myGame
             : base(game)
         {
             this.textureName = "placeholder";
+            gun = (Gun)game.GameObjectByName("GUN");
         }
 
         public Rectangle Rectangle
@@ -54,6 +56,13 @@ namespace myGame
         public override void Update(GameTime gameTime)
         {
             y++;
+
+            if(collisionDetection(gun))
+            {
+                // Add control logic
+                game.RemoveObject(this);
+            }
+            
             if (y == 480)
             {
                 y = 50;
