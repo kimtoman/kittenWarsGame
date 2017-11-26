@@ -12,9 +12,9 @@ namespace myGame
     class PowerUp : GameObject
     {
         private static System.Random rnd = new System.Random((int)DateTime.Now.Ticks);
-        private Texture2D powerUpLogo;
-        private string textureName;
-        private Gun gun;
+        protected Texture2D powerUpLogo;
+        protected string textureName = null;
+        protected Gun gun;
 
         public int x;
         public int y;
@@ -24,7 +24,8 @@ namespace myGame
         public PowerUp(KittenWarsGame game)
             : base(game)
         {
-            this.textureName = "placeholder";
+            // this.textureName = "placeholder";
+            // Get reference to gun object for collison detection
             gun = (Gun)game.GameObjectByName("GUN");
         }
 
