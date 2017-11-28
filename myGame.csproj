@@ -51,7 +51,9 @@
     <Compile Include="KittenWarsGame.cs" />
     <Compile Include="logIn.cs" />
     <Compile Include="PowerUp.cs" />
+    <Compile Include="PowerUpManager.cs" />
     <Compile Include="PowerUpPierce.cs" />
+    <Compile Include="PowerUpSpread.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScoreState.cs" />

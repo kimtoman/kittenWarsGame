@@ -15,6 +15,7 @@ namespace myGame
         protected Texture2D powerUpLogo;
         protected string textureName = null;
         protected Gun gun;
+        protected string managerName = "MANAGER";
 
         public int x;
         public int y;
@@ -24,7 +25,6 @@ namespace myGame
         public PowerUp(KittenWarsGame game)
             : base(game)
         {
-            // this.textureName = "placeholder";
             // Get reference to gun object for collison detection
             gun = (Gun)game.GameObjectByName("GUN");
         }
@@ -36,8 +36,8 @@ namespace myGame
 
         public override void Initialize()
         {
-            width = 50;
-            height = 50;
+            width = 75;
+            height = 75;
             x = rnd.Next(0, 800);
             y = rnd.Next(50, 500);
         }
@@ -60,7 +60,8 @@ namespace myGame
 
             if(collisionDetection(gun))
             {
-                // Add control logic
+                var manager = (PowerUpManager)game.GameObjectByName(managerName);
+                manager.ToggleActive();
                 game.RemoveObject(this);
             }
             

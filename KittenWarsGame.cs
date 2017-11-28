@@ -25,6 +25,7 @@ namespace myGame
 
             gunObject = new Gun(this);
             gameStateObject = new GameState(this);
+            managerObject = new PowerUpManager(this);
         }
 
         public GraphicsDeviceManager GraphicsDeviceManager { get; private set; }
@@ -87,6 +88,7 @@ namespace myGame
 
         private Gun gunObject;
         private GameState gameStateObject;
+        private PowerUpManager managerObject;
 
         protected override void LoadContent()
         {
@@ -102,6 +104,8 @@ namespace myGame
 
             AddObject(gunObject);
             AddObject(gameStateObject);
+            AddObject(managerObject);
+            managerObject.Dispense();
         }
 
         protected override void Update(GameTime gameTime)
