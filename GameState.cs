@@ -16,10 +16,10 @@ namespace myGame
         private Background winner;
         private Background loser;
         private Background main;
-        private ScoreState score;
+        private Background logIn;
         private SpriteFont endGameMessage;
         private SpriteFont scoreBarText;
-        private const int NUM_KITTENS = 10;
+        private const int NUM_KITTENS = 20;
 
         //Game Timer in seconds
         private const float delay = 20; // seconds
@@ -28,7 +28,6 @@ namespace myGame
         public GameState(KittenWarsGame game)
             : base(game)
         {
-            this.score = game.Score;
             winner = new Background(game, "winner");
             loser = new Background(game, "loser");
             main = new Background(game, "space");
@@ -38,6 +37,10 @@ namespace myGame
         {
             get
             {
+                if (gameOver)
+                {
+                    return 0;
+                }
                 return 1;
             }
         }
@@ -49,6 +52,7 @@ namespace myGame
             main.LoadContent();
             loser.LoadContent();
             winner.LoadContent();
+            
         }
 
         public override void Initialize()
@@ -62,12 +66,14 @@ namespace myGame
             }
             loser.Initialize();
             winner.Initialize();
-            
+            gameOver = false;
+            loggedIn = false;
+            didWin = false;
         }
 
         public override void Draw(GameTime gameTime)
         {
-            DrawMainBackground();
+            main.Draw(gameTime);
             DrawScoreBar();
 
 
@@ -75,7 +81,8 @@ namespace myGame
             {
                 if (didWin)
                 {
-                    DrawWinner();
+                    
+                    winner.Draw(gameTime);
                 }
                 else
                 {
@@ -92,7 +99,7 @@ namespace myGame
 
             if (remainingDelay <= 0)
             {
-                if (score.ScoreCount < 10)
+                if (game.Score.ScoreCount < 10)
                 {
                     didWin = false;
                     gameOver = true;
@@ -104,30 +111,29 @@ namespace myGame
                     gameOver = true;
                     remainingDelay = delay;
                 }
-
             }
         }
 
         protected void DrawScoreBar()
         {
             SpriteBatch.Begin();
-            SpriteBatch.DrawString(scoreBarText, "Score: " + score.ScoreCount, new Vector2(10, 10), Color.White);
-            SpriteBatch.DrawString(scoreBarText, "Evil kittens killed: " + score.NumBadKilled, new Vector2(120, 10), Color.White);
-            SpriteBatch.DrawString(scoreBarText, "Good kittens killed: " + score.NumGoodKilled, new Vector2(340, 10), Color.White);
+            SpriteBatch.DrawString(scoreBarText, "Score: " + game.Score.ScoreCount, new Vector2(10, 10), Color.White);
+            SpriteBatch.DrawString(scoreBarText, "Evil kittens killed: " + game.Score.NumBadKilled, new Vector2(120, 10), Color.White);
+            SpriteBatch.DrawString(scoreBarText, "Good kittens killed: " + game.Score.NumGoodKilled, new Vector2(340, 10), Color.White);
             SpriteBatch.DrawString(scoreBarText, "Time left: 00:" + (int)remainingDelay, new Vector2(600, 10), Color.White);
             SpriteBatch.End();
         }
         protected void DrawWinner()
         {
             SpriteBatch.Begin();
-            SpriteBatch.Draw(winner.background, new Rectangle(0, 0, 800, 480), Color.White);
+            SpriteBatch.Draw(winner.background, new Rectangle(0, 0, game.WindowWidth, game.WindowHeight), Color.White);
             SpriteBatch.End();
         }
 
         protected void DrawLoser()
         {
             SpriteBatch.Begin();
-            SpriteBatch.Draw(loser.background, new Rectangle(0, 0, 800, 480), Color.White);
+            SpriteBatch.Draw(loser.background, new Rectangle(0, 0, game.WindowWidth, game.WindowHeight), Color.White);
             SpriteBatch.DrawString(endGameMessage, "LOSER! You didn't save enough good kittens!", new Vector2(150, 240), Color.Black);
             SpriteBatch.End();
         }
@@ -135,8 +141,9 @@ namespace myGame
         protected void DrawMainBackground()
         {
             SpriteBatch.Begin();
-            SpriteBatch.Draw(main.background, new Rectangle(0, 50, 800, 480), Color.White);
+            SpriteBatch.Draw(main.background, new Rectangle(0, 50, game.WindowWidth, game.WindowHeight - 50), Color.White);
             SpriteBatch.End();
         }
+
     }
 }

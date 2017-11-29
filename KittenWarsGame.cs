@@ -13,7 +13,9 @@ namespace myGame
         protected List<GameObject> gameObjects;
         protected Dictionary<string, GameObject> gameObjectLookup;
         public ScoreState Score { get; private set; }
-
+        public int WindowWidth { get; private set; }
+        public int WindowHeight { get; private set; }
+        public int YAfterScoreBar { get; private set; }
         public KittenWarsGame()
         {
             GraphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -25,6 +27,11 @@ namespace myGame
 
             gunObject = new Gun(this);
             gameStateObject = new GameState(this);
+
+            GraphicsDeviceManager.PreferredBackBufferWidth = 1500;  // set this value to the desired width of your window
+            GraphicsDeviceManager.PreferredBackBufferHeight = 800;   // set this value to the desired height of your window
+            GraphicsDeviceManager.ApplyChanges();
+
         }
 
         public GraphicsDeviceManager GraphicsDeviceManager { get; private set; }
@@ -99,6 +106,9 @@ namespace myGame
         protected override void Initialize()
         {
             base.Initialize();
+            this.WindowHeight = 800;
+            this.WindowWidth = 1500;
+            this.YAfterScoreBar = 50;
 
             AddObject(gunObject);
             AddObject(gameStateObject);

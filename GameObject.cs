@@ -20,7 +20,7 @@ namespace myGame
 
         public virtual string Name { get; }
 
-        public virtual int DrawOrder { get { return 0; } }
+        public virtual int DrawOrder { get { return 0; } protected set { } }
 
         public virtual bool Enabled { get { return true; } }
 

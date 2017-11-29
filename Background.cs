@@ -22,6 +22,7 @@ namespace myGame
         {
             this.textureName = textureName;
         }
+
         public override void LoadContent()
         {
             background = Content.Load<Texture2D>(textureName);
@@ -35,7 +36,7 @@ namespace myGame
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch.Begin();
-            SpriteBatch.Draw(background, new Rectangle(0, 50, 800, 480), Color.White);
+            SpriteBatch.Draw(background, new Rectangle(0, 50, game.WindowWidth, game.WindowHeight), Color.White);
             SpriteBatch.End();
         }
 

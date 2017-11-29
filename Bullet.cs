@@ -14,7 +14,6 @@ namespace myGame
         private int width;
         private int height;
         private string textureName;
-        
         public Texture2D bullet { get; private set; }
         public int x { get; private set; }
         public int y { get; private set; }
@@ -65,12 +64,14 @@ namespace myGame
                         }
                         game.Score.NumGoodKilled++;
                         game.AddObject(new Kitten(game, true));
+                        game.AddObject(new Explosion(game, kitten.x, kitten.y));
                     }
                     else
                     {
-                        game.Score.ScoreCount++;
-                        game.Score.NumBadKilled++;
-                        game.AddObject(new Kitten(game, false));
+                            game.Score.ScoreCount++;
+                            game.Score.NumBadKilled++;
+                            game.AddObject(new Kitten(game, false));
+                            game.AddObject(new Explosion(game, kitten.x, kitten.y));
                     }
                     game.RemoveObject(this);
                     game.RemoveObject(kitten);

@@ -14,10 +14,16 @@ namespace myGame
         private int x;
         private int y;
         private string textureName;
-        public Explosion(KittenWarsGame game, String textureName) 
+        //Game Timer in seconds
+        private const float delay = 2; // seconds
+        private float remainingDelay = delay;
+
+        public Explosion(KittenWarsGame game, int x, int y) 
             : base(game)
         {
-            this.textureName = textureName;
+            this.textureName = "explode";
+            this.x = x;
+            this.y = y;
         }
 
         public override void LoadContent()
@@ -34,7 +40,14 @@ namespace myGame
 
         public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            //Game timer (20 seconds)
+            var timer = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            remainingDelay -= timer;
+
+            if (remainingDelay < 1)
+            {
+                game.RemoveObject(this);
+            }
         }
     }
 }

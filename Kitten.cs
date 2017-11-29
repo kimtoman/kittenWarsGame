@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace myGame
 {
-    class Kitten : GameObject   
+    class Kitten : GameObject
     {
         private static System.Random rnd = new System.Random((int)DateTime.Now.Ticks);
 
@@ -18,8 +18,9 @@ namespace myGame
         public int y;
         public int width;
         public int height;
+        public int startingY;
         private string textureName;
-        private bool isDead;
+        bool isDead;
 
         public Kitten(KittenWarsGame game, bool IsGood)
             : base(game)
@@ -28,13 +29,15 @@ namespace myGame
             this.textureName = IsGood ? "pink" : "blue";
         }
 
+        public override string Name { get { return "KITTEN"; } }
+
         public bool IsGood { get; private set; }
 
         public Rectangle Rectangle
         {
             get { return new Rectangle(x, y, width, height); }
         }
-        
+
         public override void LoadContent()
         {
             kitten = Content.Load<Texture2D>(textureName);
@@ -43,8 +46,9 @@ namespace myGame
         public override void Initialize()
         {
             isDead = false;
-            x = rnd.Next(0, 800);
-            y = rnd.Next(50, 500);
+            x = rnd.Next(0, game.WindowWidth);
+            y = rnd.Next(game.YAfterScoreBar, game.WindowHeight);
+            startingY = y;
             width = 100;
             height = 100;
         }
@@ -52,10 +56,11 @@ namespace myGame
         public override void Update(GameTime gameTime)
         {
             y++;
-            if (y == 480)
+            if (y == game.WindowHeight)
             {
-                y = 50;
+                y = game.YAfterScoreBar;
             }
+
         }
 
         public override void Draw(GameTime gameTime)
