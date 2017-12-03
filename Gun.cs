@@ -64,8 +64,13 @@ namespace myGame
             if (lastMouseState.LeftButton == ButtonState.Released &&
                 currentMouseState.LeftButton == ButtonState.Pressed)
             {
-                game.AddObject(new Bullet(game, mouseState.X, mouseState.Y));
+                Fire(mouseState.X, mouseState.Y);
             }
+        }
+
+        public virtual void Fire(int x, int y)
+        {
+            game.AddObject(new Bullet(game, x, y));
         }
 
     }

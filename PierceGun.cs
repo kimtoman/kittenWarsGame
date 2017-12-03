@@ -13,5 +13,10 @@ namespace myGame
         {
             this.textureName = "piercegun";
         }
+
+        public override void Fire(int x, int y)
+        {
+            game.AddObject(new PierceBullet(game, x, y));
+        }
     }
 }

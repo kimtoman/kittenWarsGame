@@ -50,6 +50,7 @@
     <Compile Include="Kitten.cs" />
     <Compile Include="KittenWarsGame.cs" />
     <Compile Include="logIn.cs" />
+    <Compile Include="PierceBullet.cs" />
     <Compile Include="PierceGun.cs" />
     <Compile Include="PowerUp.cs" />
     <Compile Include="PowerUpManager.cs" />
