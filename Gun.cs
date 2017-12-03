@@ -11,15 +11,15 @@ namespace myGame
 {
     class Gun : GameObject
     {
-        private Texture2D gun;
-        private int x;
-        private int y;
-        int width;
-        int height;
-        private string textureName;
+        protected Texture2D gun;
+        protected int x;
+        protected int y;
+        protected int width;
+        protected int height;
+        protected string textureName;
         //Mouse states for single click detection
-        private MouseState lastMouseState;
-        private MouseState currentMouseState;
+        protected MouseState lastMouseState;
+        protected MouseState currentMouseState;
 
         public Gun(KittenWarsGame game) 
             : base(game)

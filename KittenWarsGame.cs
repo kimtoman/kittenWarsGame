@@ -72,6 +72,12 @@ namespace myGame
             gameObjects.Add(obj);
         }
 
+        internal void SetGun(Gun newGun)
+        {
+            gunObject = newGun;
+            AddObject(gunObject);
+        }
+
         public void RemoveObject(GameObject obj)
         {
             // obj.UnloadContent
@@ -129,5 +135,6 @@ namespace myGame
                 gameObject.Draw(gameTime);
             }
         }
+
     }
 }
