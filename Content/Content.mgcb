@@ -200,7 +200,7 @@
 /processorParam:TextureFormat=Color
 /build:spreadgun.png
 
-#begin button.png
+#begin piercebullet.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -210,7 +210,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:button.png
+/build:piercebullet.png
 
 #begin hover.png
 /importer:TextureImporter
@@ -246,5 +246,4 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:hand.png
 

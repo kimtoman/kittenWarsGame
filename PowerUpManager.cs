@@ -71,20 +71,20 @@ namespace myGame
 
             {
                 var gun = (Gun)game.GameObjectByName(gunName);
-                //game.RemoveObject(gun);
+                game.RemoveObject(gun);
                 switch (status)
                 {
                     case 0:
-                        //game.setGun(new PierceGun(game));
+                        game.SetGun(new PierceGun(game));
                         break;
 
                     case 1:
-                        //game.setGun(new SpreadGun(game));
+                        game.SetGun(new SpreadGun(game));
                         break;
 
                     default:
                         // should not occur, but if it does remake the original gun
-                        //game.setGun(new Gun(game));
+                        game.SetGun(new Gun(game));
                         break;
                 }
             }

@@ -11,15 +11,15 @@ namespace myGame
 {
     class Gun : GameObject
     {
-        private Texture2D gun;
-        private int x;
-        private int y;
-        int width;
-        int height;
-        private string textureName;
+        protected Texture2D gun;
+        protected int x;
+        protected int y;
+        protected int width;
+        protected int height;
+        protected string textureName;
         //Mouse states for single click detection
-        private MouseState lastMouseState;
-        private MouseState currentMouseState;
+        protected MouseState lastMouseState;
+        protected MouseState currentMouseState;
 
         public Gun(KittenWarsGame game) 
             : base(game)
@@ -64,8 +64,13 @@ namespace myGame
             if (lastMouseState.LeftButton == ButtonState.Released &&
                 currentMouseState.LeftButton == ButtonState.Pressed)
             {
-                game.AddObject(new Bullet(game, mouseState.X, mouseState.Y));
+                Fire(mouseState.X, mouseState.Y);
             }
+        }
+
+        public virtual void Fire(int x, int y)
+        {
+            game.AddObject(new Bullet(game, x, y));
         }
 
     }

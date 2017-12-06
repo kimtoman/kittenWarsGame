@@ -54,6 +54,8 @@
     <Compile Include="logIn.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="notes.cs" />
+    <Compile Include="PierceBullet.cs" />
+    <Compile Include="PierceGun.cs" />
     <Compile Include="PowerUp.cs" />
     <Compile Include="PowerUpManager.cs" />
     <Compile Include="PowerUpPierce.cs" />
@@ -61,6 +63,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScoreState.cs" />
+    <Compile Include="SpreadBullet.cs" />
+    <Compile Include="SpreadGun.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>

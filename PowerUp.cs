@@ -39,7 +39,7 @@ namespace myGame
             width = 75;
             height = 75;
             x = rnd.Next(0, 800);
-            y = rnd.Next(50, 500);
+            y = rnd.Next(0, 200);
         }
 
         public override void LoadContent()

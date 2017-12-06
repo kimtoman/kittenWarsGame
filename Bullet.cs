@@ -11,12 +11,12 @@ namespace myGame
 {
     class Bullet : GameObject
     {
-        private int width;
-        private int height;
-        private string textureName;
+        protected int width;
+        protected int height;
+        protected string textureName;
         public Texture2D bullet { get; private set; }
-        public int x { get; private set; }
-        public int y { get; private set; }
+        public int x { get; protected set; }
+        public int y { get; protected set; }
 
         public Bullet(KittenWarsGame game, int x, int y)
             : base(game)
