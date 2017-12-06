@@ -50,7 +50,7 @@ namespace myGame
 
         public override void Update(GameTime gameTime)
         {
-            x -= 3;
+            x -= 5;
             var kittens = game.GameObjectsOfType<Kitten>();
             foreach(var kitten in kittens)
             {
@@ -64,6 +64,7 @@ namespace myGame
                         }
                         game.Score.NumGoodKilled++;
                         game.AddObject(new Kitten(game, true));
+                        game.AddObject(new ActivityMessage(game, x, y, "-1 : Score:" + game.Score.ScoreCount));
                         game.AddObject(new Explosion(game, kitten.x, kitten.y));
                     }
                     else
@@ -71,6 +72,7 @@ namespace myGame
                             game.Score.ScoreCount++;
                             game.Score.NumBadKilled++;
                             game.AddObject(new Kitten(game, false));
+                            game.AddObject(new ActivityMessage(game, x, y, "+1 : Score:" + game.Score.ScoreCount));
                             game.AddObject(new Explosion(game, kitten.x, kitten.y));
                     }
                     game.RemoveObject(this);

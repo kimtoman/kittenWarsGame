@@ -106,12 +106,14 @@ namespace myGame
                 {
                     didWin = false;
                     gameOver = true;
+                    game.menu.isActive = false;
                     remainingDelay = delay;
                 }
                 else
                 {
                     didWin = true;
                     gameOver = true;
+                    game.menu.isActive = false;
                     remainingDelay = delay;
                 }
             }
@@ -150,3 +152,4 @@ namespace myGame
 
     }
 }
+

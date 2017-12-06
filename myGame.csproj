@@ -41,8 +41,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ActivityMessage.cs" />
     <Compile Include="Background.cs" />
     <Compile Include="Bullet.cs" />
+    <Compile Include="Button.cs" />
     <Compile Include="Explosion.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GameState.cs" />
@@ -50,6 +52,8 @@
     <Compile Include="Kitten.cs" />
     <Compile Include="KittenWarsGame.cs" />
     <Compile Include="logIn.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="notes.cs" />
     <Compile Include="PowerUp.cs" />
     <Compile Include="PowerUpManager.cs" />
     <Compile Include="PowerUpPierce.cs" />

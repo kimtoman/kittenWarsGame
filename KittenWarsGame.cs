@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,15 @@ namespace myGame
         public int WindowWidth { get; private set; }
         public int WindowHeight { get; private set; }
         public int YAfterScoreBar { get; private set; }
+        public MouseState mouseState;
+        public Menu menu;
+
         public KittenWarsGame()
         {
             GraphicsDeviceManager = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            mouseState = new MouseState();
 
             gameObjects = new List<GameObject>();
             gameObjectLookup = new Dictionary<string, GameObject>();
@@ -31,6 +37,15 @@ namespace myGame
             GraphicsDeviceManager.PreferredBackBufferWidth = 1500;  // set this value to the desired width of your window
             GraphicsDeviceManager.PreferredBackBufferHeight = 800;   // set this value to the desired height of your window
             GraphicsDeviceManager.ApplyChanges();
+
+            this.WindowHeight = 800;
+            this.WindowWidth = 1500;
+            this.YAfterScoreBar = 50;
+
+            menu = new Menu(this);
+
+            
+            
 
         }
 
@@ -99,22 +114,21 @@ namespace myGame
         protected override void LoadContent()
         {
             base.LoadContent();
-
+            menu.LoadContent();
             // Create a new SpriteBatch, which can be used to draw textures.
             SpriteBatch = new SpriteBatch(GraphicsDevice);
+
         }
 
         protected override void Initialize()
         {
             base.Initialize();
-            this.WindowHeight = 800;
-            this.WindowWidth = 1500;
-            this.YAfterScoreBar = 50;
-
+            
             AddObject(gunObject);
             AddObject(gameStateObject);
             AddObject(managerObject);
             managerObject.Dispense();
+            menu.Initialize();
         }
 
         protected override void Update(GameTime gameTime)
@@ -125,6 +139,10 @@ namespace myGame
             {
                 gameObjects[i].Update(gameTime);
             }
+            if (!menu.isActive)
+            {
+                menu.Update(gameTime);
+            }
         }
 
         protected override void Draw(GameTime gameTime)
@@ -132,10 +150,17 @@ namespace myGame
             base.Draw(gameTime);
 
             GraphicsDevice.Clear(Color.Black);
-
-            foreach (var gameObject in gameObjects.OrderByDescending(obj => obj.DrawOrder))
+            if(!menu.isActive && !menu.isStart)
             {
-                gameObject.Draw(gameTime);
+                menu.Draw(gameTime);
+            } else if (menu.isStart)
+            {
+                menu.Draw(gameTime);
+            } else {
+                foreach (var gameObject in gameObjects.OrderByDescending(obj => obj.DrawOrder))
+                {
+                    gameObject.Draw(gameTime);
+                }
             }
         }
     }

@@ -23,6 +23,14 @@ namespace myGame
             this.textureName = textureName;
         }
 
+        public override int DrawOrder
+        {
+            get
+            {
+                return 0;
+            }
+        }
+
         public override void LoadContent()
         {
             background = Content.Load<Texture2D>(textureName);
@@ -38,6 +46,7 @@ namespace myGame
             SpriteBatch.Begin();
             SpriteBatch.Draw(background, new Rectangle(0, 50, game.WindowWidth, game.WindowHeight), Color.White);
             SpriteBatch.End();
+            
         }
 
         public override void Update(GameTime gameTime)
